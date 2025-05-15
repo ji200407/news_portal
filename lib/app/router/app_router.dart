@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:news_portal/presentation/login/longin_screen.dart';
+import 'package:news_portal/presentation/login/login_screen.dart';
 import 'package:news_portal/presentation/news_list/news_list_screen.dart';
 
 final appRouter = GoRouter(
@@ -9,7 +9,7 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRouter.login.path,
       name: AppRouter.login.name,
-      builder: (context, state) => LonginScreen(),
+      builder: (context, state) => LoginScreen(),
     ),
     GoRoute(
       path: AppRouter.newsList.path,
