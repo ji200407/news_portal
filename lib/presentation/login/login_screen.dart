@@ -47,9 +47,11 @@ class _LoginScreenState extends State<LoginScreen> {
   TextField _textField({
     required TextEditingController controller,
     required String hintText,
+    bool obscure = false,
   }) {
     return TextField(
       controller: controller,
+      obscureText: obscure,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         hintText: hintText,
@@ -62,64 +64,69 @@ class _LoginScreenState extends State<LoginScreen> {
     return AppScaffold(
       child: Padding(
         padding: const EdgeInsets.all(30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            AppLogo(),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              AppLogo(),
 
-            Container(
-              height: 250,
-              alignment: Alignment.center,
-              child: Text(
-                AppTrans.login.welcome.tr(),
-                style: TextStyle(
-                  fontSize: 45, //
-                  fontWeight: FontWeight.bold,
+              Container(
+                height: 250,
+                alignment: Alignment.center,
+                child: Text(
+                  AppTrans.login.welcome.tr(),
+                  style: TextStyle(
+                    fontSize: 45, //
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
 
-            _textField(
-              controller: _emailController,
-              hintText: AppTrans.login.email.tr(),
-            ),
-
-            20.heightBox,
-
-            _textField(
-              controller: _passwordController,
-              hintText: AppTrans.login.password.tr(),
-            ),
-
-            20.heightBox,
-
-            SizedBox(
-              height: 55,
-              child: ElevatedButton(
-                onPressed: _onLogin,
-                child: Text(AppTrans.login.login.tr()),
+              //#region 이메일 입력
+              _textField(
+                controller: _emailController,
+                hintText: AppTrans.login.email.tr(),
               ),
-            ),
 
-            Container(
-              height: 70,
-              alignment: Alignment.center,
-              child: Row(
-                spacing: 10,
-                children: [
-                  Expanded(child: Divider()),
-                  Text(AppTrans.login.orUse.tr()),
-                  Expanded(child: Divider()),
-                ],
+              20.heightBox,
+
+              //#region 패스워드 입력
+              _textField(
+                controller: _passwordController,
+                hintText: AppTrans.login.password.tr(),
+                obscure: true,
               ),
-            ),
 
-            _buildSsoButton('Google'),
+              20.heightBox,
 
-            10.heightBox,
+              SizedBox(
+                height: 55,
+                child: ElevatedButton(
+                  onPressed: _onLogin,
+                  child: Text(AppTrans.login.login.tr()),
+                ),
+              ),
 
-            _buildSsoButton('Apple'),
-          ],
+              Container(
+                height: 70,
+                alignment: Alignment.center,
+                child: Row(
+                  spacing: 10,
+                  children: [
+                    Expanded(child: Divider()),
+                    Text(AppTrans.login.orUse.tr()),
+                    Expanded(child: Divider()),
+                  ],
+                ),
+              ),
+
+              _buildSsoButton('Google'),
+
+              10.heightBox,
+
+              _buildSsoButton('Apple'),
+            ],
+          ),
         ),
       ),
     );

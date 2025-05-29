@@ -3,4 +3,6 @@ class ApiConfige {
   static const String funcUrl = '$baseUrl/functions/v1';
 
   static final auth = (login: '$funcUrl/auth/get-token');
+
+  static final news = (getList: '$funcUrl/news');
 }
