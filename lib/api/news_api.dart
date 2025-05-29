@@ -13,7 +13,7 @@ class NewsApi {
           Log.red('뉴스목록 가져오기 오류: $e');
           return http.Response(e.toString(), 400);
         });
-    if (result.statusCode != 200) {}
+    // if (result.statusCode != 200) {return null;}
     final body = result.body;
     final bodyJson = jsonDecode(body);
     final List<dynamic> newsRaw = bodyJson['news'];
