@@ -18,4 +18,7 @@ class NewsListAppBar extends StatelessWidget implements PreferredSizeWidget {
       ],
     );
   }
+
+  @override
+  Size get PreferredSize => Size.fromHeight(kToolbarHeight);
 }

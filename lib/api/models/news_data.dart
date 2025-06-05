@@ -6,6 +6,7 @@ class NewsData {
   final String? imageUrl;
   final String description;
   final String pubDate;
+
   NewsData({
     required this.title,
     this.imageUrl,

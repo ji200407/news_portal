@@ -4,6 +4,7 @@ import 'package:news_portal/presentation/news_list/widgets/app_bar.dart';
 import 'package:news_portal/presentation/news_list/widgets/hot_topic.dart';
 import 'package:news_portal/presentation/widgets/app_logo.dart';
 import 'package:news_portal/presentation/widgets/app_scaffold.dart';
+import 'package:news_portal/presentation/news_list/widgets/lastest__news.dart';
 
 class NewsListScreen extends StatelessWidget {
   const NewsListScreen({super.key});
@@ -12,7 +13,10 @@ class NewsListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       appBar: NewsListAppBar(),
-      child: Column(children: [HotTopic()]),
+      child: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 35),
+        child: Column(spacing: 25, children: [HotTopic(), LastestListScreen()]),
+      ),
     );
   }
 }
